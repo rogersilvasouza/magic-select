@@ -7,13 +7,29 @@ class MagicSelect extends Component {
 
         super(props);
 
+        this.state = { items: [] };
+
         console.log('Construtor');
 
     }
 
     componentDidMount() {
 
-        console.log('Componente Iniciado');
+        fetch('https://raw.githubusercontent.com/rogersilvasouza/react-magic-select/master/public/example.json', { method: "GET" })
+        .then(response => {
+
+          return response.json();
+
+        }).then(json => {
+
+          console.dir(json);
+          this.setState({ items : json });
+
+        }).catch(error => {
+
+          console.log(error);
+
+        });
 
     };
 
