@@ -25,8 +25,7 @@ class MagicSelect extends Component {
 
     render () {
 
-        let data = {
-          data : [{
+        var data = [{
               value : 1001,
               text  : 'São Paulo'
             },{
@@ -38,21 +37,16 @@ class MagicSelect extends Component {
             },{
               value : 1004,
               text  : 'Minas Gerais'
-            }
-
-          ]
-        }
-
-        console.dir(data);
-
-        for (var k in data) {
-          console.log(k, data[k]);
-        }
+            }];
 
         return (
             <div className='MagicSelect'>
               <select>
-                <option value="sp">São Paulo</option>
+                  {
+                      data.map((data, key) => (
+                          <option  value={data.value} key={'select:' + key}>{data.text}</option>
+                      ))
+                  }
               </select>
             </div>
         );
