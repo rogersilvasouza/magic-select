@@ -9,12 +9,10 @@ class MagicSelect extends Component {
 
         super(props);
 
-        console.dir(props);
-
         this.state = {
           items  : [],
           click  : false,
-          select : 'Select'
+          select : 'Sel.'
         };
 
     };
@@ -47,15 +45,30 @@ class MagicSelect extends Component {
 
     };
 
-    clickOnSelect = () => {
+    focusOnSelect = () => {
 
-        console.log('5 - clickOnSelect');
+        console.log('5 - focusOnSelect');
 
         console.log('this is:', this);
 
         this.setState({
           click  : true,
-          select : 'Selecione'
+          select : 'Select'
+        });
+
+        this.render();
+
+    }
+
+    blurOnSelect = () => {
+
+        console.log('6 - blurOnSelect');
+
+        console.log('this is:', this);
+
+        this.setState({
+          click  : true,
+          select : 'Sel'
         });
 
         this.render();
@@ -64,7 +77,7 @@ class MagicSelect extends Component {
 
     componentWillUpdate() {
 
-        console.log('6 - componentWillUpdate');
+        console.log('7 - componentWillUpdate');
 
     }
 
@@ -76,25 +89,11 @@ class MagicSelect extends Component {
               magicSelectOutsideClass = this.props.outsideClass ? this.props.outsideClass : 'MagicSelect',
                                  data = this.state.items;
 
-        /* Props */
-        console.group('Props');
-        console.log('required     : ' + magicSelectRequired);
-        console.log('outsideClass : ' + magicSelectOutsideClass);
-        console.groupEnd('Props');
-
-        // let option = 'Select';
-        //
-        // if (teste === 1) {
-        //
-        //     option = <option value="teste">Select One of Four</option>;
-        //
-        // }
-
         return (
 
             <div className={Style.MagicSelect} >
 
-              <select required={magicSelectRequired} className={magicSelectOutsideClass} onClick={this.clickOnSelect} >
+              <select required={magicSelectRequired} className={magicSelectOutsideClass} onFocus={this.focusOnSelect} onBlur={this.blurOnSelect} >
 
                   <option value="" key={Style.MagicSelect + ':' + 0}>{this.state.select}</option>
 
@@ -102,7 +101,7 @@ class MagicSelect extends Component {
 
                           data.map((data, key) => (
 
-                              <option  value={data.value} key={Style.MagicSelect + ':' + (key + 1)}>{data.text}</option>
+                              <option  value={data.value} key={Style.MagicSelect + ':' + (key + 1)}>{data.raw}</option>
 
                           ))
 
