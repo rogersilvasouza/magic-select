@@ -1,15 +1,111 @@
 {
   "data" :  [{
               "value" : 1001,
-              "text"  : "São Paulo"
+              "brief" : "AC",
+              "raw"   : "Acre"
             }, {
               "value" : 1002,
-              "text"  : "Rio de Janeiro"
+              "brief" : "AL",
+              "raw"   : "Alagoas"
             },{
               "value" : 1003,
-              "text"  : "Santa Catarina"
+              "brief" : "AP",
+              "raw"   : "Amapá"
             },{
               "value" : 1004,
-              "text"  : "Minas Gerais"
+              "brief" : "AM",
+              "raw"   : "Amazonas"
+            },{
+              "value" : 1005,
+              "brief" : "BA",
+              "raw"   : "Bahia"
+            },{
+              "value" : 1006,
+              "brief" : "CE",
+              "raw"   : "Ceará"
+            },{
+              "value" : 1007,
+              "brief" : "DF",
+              "raw"   : "Distrito Federal"
+            },{
+              "value" : 1008,
+              "brief" : "ES",
+              "raw"   : "Espirito Santo"
+            },{
+              "value" : 1009,
+              "brief" : "GO",
+              "raw"   : "Goiás"
+            },{
+              "value" : 1010,
+              "brief" : "MA",
+              "raw"   : "Maranhão"
+            },{
+              "value" : 1011,
+              "brief" : "MS",
+              "raw"   : "Mato Grosso do Sul"
+            },{
+              "value" : 1012,
+              "brief" : "MT",
+              "raw"   : "Mato Grosso"
+            },{
+              "value" : 1013,
+              "brief" : "MG",
+              "raw"   : "Minas Gerais"
+            },{
+              "value" : 1014,
+              "brief" : "PA",
+              "raw"   : "Pará"
+            },{
+              "value" : 1015,
+              "brief" : "PB",
+              "raw"   : "Paraíba"
+            },{
+              "value" : 1016,
+              "brief" : "PR",
+              "raw"   : "Paraná"
+            },{
+              "value" : 1017,
+              "brief" : "PE",
+              "raw"   : "Pernambuco"
+            },{
+              "value" : 1018,
+              "brief" : "PI",
+              "raw"   : "Piauí"
+            },{
+              "value" : 1019,
+              "brief" : "RJ",
+              "raw"   : "Rio de Janeiro"
+            },{
+              "value" : 1020,
+              "brief" : "RN",
+              "raw"   : "Rio Grande do Norte"
+            },{
+              "value" : 1021,
+              "brief" : "RS",
+              "raw"   : "Rio Grande do Sul"
+            },{
+              "value" : 1022,
+              "brief" : "RO",
+              "raw"   : "Rondônia"
+            },{
+              "value" : 1023,
+              "brief" : "RR",
+              "raw"   : "Roraima"
+            },{
+              "value" : 1024,
+              "brief" : "SC",
+              "raw"   : "Santa Catarina"
+            },{
+              "value" : 1025,
+              "brief" : "SP",
+              "raw"   : "São Paulo"
+            },{
+              "value" : 1026,
+              "brief" : "SE",
+              "raw"   : "Sergipe"
+            },{
+              "value" : 1027,
+              "brief" : "TO",
+              "raw"   : "Tocantins"
             }]
 }
