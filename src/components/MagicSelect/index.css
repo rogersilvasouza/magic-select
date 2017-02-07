@@ -1,7 +1,7 @@
 
 :local(.MagicSelect) select {
     height        : 35px;
-    width         : 50px;
+    width         : 100px;
     font-size     : 16px;
     border        : 0;
     border-radius : 0;
