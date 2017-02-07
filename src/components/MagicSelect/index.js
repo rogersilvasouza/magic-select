@@ -11,7 +11,7 @@ class MagicSelect extends Component {
 
         this.state = {
           items  : [],
-          click  : false,
+          focus  : false,
           select : 'Sel.'
         };
 
@@ -52,7 +52,7 @@ class MagicSelect extends Component {
         console.log('this is:', this);
 
         this.setState({
-          click  : true,
+          focus  : true,
           select : 'Select'
         });
 
@@ -67,7 +67,7 @@ class MagicSelect extends Component {
         console.log('this is:', this);
 
         this.setState({
-          click  : true,
+          focus  : false,
           select : 'Sel'
         });
 
@@ -85,6 +85,8 @@ class MagicSelect extends Component {
 
         console.log('4 - Render');
 
+        console.log('State Focus ', this.state.focus);
+
         const magicSelectRequired     = this.props.magicSelectRequired,
               magicSelectOutsideClass = this.props.outsideClass ? this.props.outsideClass : 'MagicSelect',
                                  data = this.state.items;
@@ -101,7 +103,7 @@ class MagicSelect extends Component {
 
                           data.map((data, key) => (
 
-                              <option  value={data.value} key={Style.MagicSelect + ':' + (key + 1)}>{data.raw}</option>
+                              <option  value={data.value} key={Style.MagicSelect + ':' + (key + 1)}>{ this.state.focus ? data.raw : data.brief }</option>
 
                           ))
 
