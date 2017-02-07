@@ -1,33 +1,40 @@
-// import React, {Component, PropTypes} from 'react';
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
+import Style                         from './index.css';
 
 class MagicSelect extends Component {
 
     constructor(props) {
 
+        console.log('1 - Constructor');
+
         super(props);
 
-        this.state = { items: [] };
+        console.dir(props);
 
-        console.log('Construtor');
+        this.state = {
+          items : [],
+          click : false
+        };
 
-    }
+    };
 
     componentDidMount() {
 
-        fetch('https://raw.githubusercontent.com/rogersilvasouza/react-magic-select/master/public/example.json', { method: "GET" })
-        .then(response => {
+        console.log('2 - componentDidMount');
 
-          return response.json();
+        fetch('https://raw.githubusercontent.com/rogersilvasouza/react-magic-select/master/public/example.json', { method: "GET" }).then(response => {
+
+            return response.json();
 
         }).then(json => {
 
-          console.dir(json);
-          this.setState({ items : json });
+            console.dir(json);
+
+            this.setState({ items : json.data });
 
         }).catch(error => {
 
-          console.log(error);
+            console.log(error);
 
         });
 
@@ -35,48 +42,68 @@ class MagicSelect extends Component {
 
     componentWillUnmount() {
 
-        console.log('Componente Finalizado');
+        console.log('3 - componentWillUnmount');
 
     };
 
-    render () {
+    clickOnSelect = () => {
 
-        var data = [{
-              value : 1001,
-              text  : 'São Paulo'
-            },{
-              value : 1002,
-              text  : 'Rio de Janeiro'
-            },{
-              value : 1003,
-              text  : 'Santa Catarina'
-            },{
-              value : 1004,
-              text  : 'Minas Gerais'
-            }];
+        console.log('5 - clickOnSelect');
 
-        return (
-            <div className='MagicSelect'>
-              <select>
-                  {
-                      data.map((data, key) => (
-                          <option  value={data.value} key={'select:' + key}>{data.text}</option>
-                      ))
-                  }
-              </select>
-            </div>
-        );
+        console.log('this is:', this);
+
+        this.setState({ click : true });
 
     }
 
+    render () {
+
+        console.log('4 - Render');
+
+        const magicSelectRequired     = this.props.magicSelectRequired,
+              magicSelectOutsideClass = this.props.outsideClass ? this.props.outsideClass : 'MagicSelect',
+                                 data = this.state.items;
+
+        /* Props */
+        console.group('Props');
+        console.log('required     : ' + magicSelectRequired);
+        console.log('outsideClass : ' + magicSelectOutsideClass);
+        console.groupEnd('Props');
+
+        return (
+
+            <div className={Style.MagicSelect} >
+
+              <select required={magicSelectRequired} className={magicSelectOutsideClass} onClick={this.clickOnSelect} >
+
+                  <option value="" key={Style.MagicSelect + ':' + 0}>Select</option>
+
+                  {
+
+                      data.map((data, key) => (
+
+                          <option  value={data.value} key={Style.MagicSelect + ':' + (key + 1)}>{data.text}</option>
+
+                      ))
+
+                  }
+
+              </select>
+
+            </div>
+
+        );
+
+    };
+
 }
 
-// MagicSelect.propTypes = {
-//     children : React.PropTypes.node.isRequired,
-//     data     : React.PropTypes.object({
-//         value  : React.PropTypes.string,
-//         option : React.PropTypes.string,
-//     }),
-// };
+MagicSelect.defaultProps = {
+    magicSelectRequired : false,
+};
+
+MagicSelect.propTypes = {
+    magicSelectRequired : PropTypes.oneOf([true, false]),
+};
 
 export default MagicSelect;
