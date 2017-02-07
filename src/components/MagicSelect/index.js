@@ -12,8 +12,9 @@ class MagicSelect extends Component {
         console.dir(props);
 
         this.state = {
-          items : [],
-          click : false
+          items  : [],
+          click  : false,
+          select : 'Select'
         };
 
     };
@@ -52,7 +53,18 @@ class MagicSelect extends Component {
 
         console.log('this is:', this);
 
-        this.setState({ click : true });
+        this.setState({
+          click  : true,
+          select : 'Selecione'
+        });
+
+        this.render();
+
+    }
+
+    componentWillUpdate() {
+
+        console.log('6 - componentWillUpdate');
 
     }
 
@@ -70,21 +82,29 @@ class MagicSelect extends Component {
         console.log('outsideClass : ' + magicSelectOutsideClass);
         console.groupEnd('Props');
 
+        // let option = 'Select';
+        //
+        // if (teste === 1) {
+        //
+        //     option = <option value="teste">Select One of Four</option>;
+        //
+        // }
+
         return (
 
             <div className={Style.MagicSelect} >
 
               <select required={magicSelectRequired} className={magicSelectOutsideClass} onClick={this.clickOnSelect} >
 
-                  <option value="" key={Style.MagicSelect + ':' + 0}>Select</option>
+                  <option value="" key={Style.MagicSelect + ':' + 0}>{this.state.select}</option>
 
                   {
 
-                      data.map((data, key) => (
+                          data.map((data, key) => (
 
-                          <option  value={data.value} key={Style.MagicSelect + ':' + (key + 1)}>{data.text}</option>
+                              <option  value={data.value} key={Style.MagicSelect + ':' + (key + 1)}>{data.text}</option>
 
-                      ))
+                          ))
 
                   }
 
