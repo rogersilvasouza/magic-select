@@ -17,10 +17,10 @@ class App extends Component {
 
                   <MagicSelect
                     required="false"
-                    outsideClass="form-select big md-4"
+                    outsideClass="meu-formulario meu-select-small"
                      />
 
-                  <input type="submit" value="send" />
+                   {/*<input type="submit" value="send" />*/}
 
                 </form>
 
