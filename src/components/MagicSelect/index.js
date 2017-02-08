@@ -87,25 +87,32 @@ class MagicSelect extends Component {
 
         console.log('State Focus ', this.state.focus);
 
-        const magicSelectRequired     = this.props.magicSelectRequired,
-              magicSelectOutsideClass = this.props.outsideClass ? this.props.outsideClass : 'MagicSelect',
-                                 data = this.state.items;
+        const magicSelectRequired      = this.props.magicSelectRequired,
+              magicSelectOutsideClass  = this.props.outsideClass  ? this.props.outsideClass  : 'MagicSelect',
+              magicSelectDefaultOption = this.props.defaultOption ? this.props.defaultOption : { raw : null, brief : null, value : null },
+                                  data = this.state.items;
+
+              console.dir(magicSelectDefaultOption);
 
         return (
 
             <div className={Style.MagicSelect} >
 
-              <select required={magicSelectRequired} className={magicSelectOutsideClass} onFocus={this.focusOnSelect} onBlur={this.blurOnSelect} >
+              <select required={magicSelectRequired} className={magicSelectOutsideClass} onFocus={this.focusOnSelect} onBlur={this.blurOnSelect}>
 
-                  <option value="" key={Style.MagicSelect + ':' + 0}>{this.state.select}</option>
+                  if (magicSelectDefaultOption && (magicSelectDefaultOption.value && magicSelectDefaultOption.raw && magicSelectDefaultOption.brief)) {
+
+                      <option  value={magicSelectDefaultOption.value} key={Style.MagicSelect + ':' + 0}>{ this.state.focus ? magicSelectDefaultOption.raw : magicSelectDefaultOption.brief }</option>
+
+                  }
 
                   {
 
-                          data.map((data, key) => (
+                      data.map((item, key) => (
 
-                              <option  value={data.value} key={Style.MagicSelect + ':' + (key + 1)}>{ this.state.focus ? data.raw : data.brief }</option>
+                          <option  value={item.value} key={Style.MagicSelect + ':' + (key + 1)}>{ this.state.focus ? item.raw : item.brief }</option>
 
-                          ))
+                      ))
 
                   }
 
@@ -120,11 +127,11 @@ class MagicSelect extends Component {
 }
 
 MagicSelect.defaultProps = {
-    magicSelectRequired : false,
+    defaultOption : { raw : null, brief : null, value : null },
 };
 
 MagicSelect.propTypes = {
-    magicSelectRequired : PropTypes.oneOf([true, false]),
+    defaultOption : PropTypes.object,
 };
 
 export default MagicSelect;

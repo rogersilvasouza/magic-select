@@ -18,6 +18,7 @@ class App extends Component {
                   <MagicSelect
                     required="false"
                     outsideClass="meu-formulario meu-select-small"
+                    defaultOption={{ raw : 'Select', brief : 'Sel', value : 9892 }}
                      />
 
                    {/*<input type="submit" value="send" />*/}
